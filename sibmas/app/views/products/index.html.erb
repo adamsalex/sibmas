@@ -1,21 +1,18 @@
-<h1>Listing products</h1>
+<%= link_to 'New Product', new_product_path %>
 
+<h1>Listing products</h1>
 <table>
   <thead>
     <tr>
-      <th>Name ru</th>
-      <th></th>
-      <th>Product code</th>
-      <th>Weight</th>
+      <th>Name</th>
+      <th>Articul Masuma</th>
+    <!--   <th>Weight</th>
       <th>Price</th>
       <th>List price</th>
       <th>Slug</th>
       <th>Description ru</th>
       <th>Meta description ru</th>
-      <th>Meta title ru</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Meta title ru</th> -->
     </tr>
   </thead>
 
@@ -24,13 +21,13 @@
       <tr>
         <td><%= product.name_ru %></td>
         <td><%= product.product_code %></td>
-        <td><%= product.weight %></td>
+        <!-- <td><%= product.weight %></td>
         <td><%= product.price %></td>
         <td><%= product.list_price %></td>
         <td><%= product.slug %></td>
         <td><%= product.description_ru %></td>
         <td><%= product.meta_description_ru %></td>
-        <td><%= product.meta_title_ru %></td>
+        <td><%= product.meta_title_ru %></td> -->
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,4 +38,3 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>

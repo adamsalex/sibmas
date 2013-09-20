@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name_ru: MyString
+  : MyString
+  product_code: MyString
+  weight: 1.5
+  price: 9.99
+  list_price: 9.99
+  slug: MyString
+  description_ru: MyText
+  meta_description_ru: MyText
+  meta_title_ru: MyText
+
+two:
+  name_ru: MyString
+  : MyString
+  product_code: MyString
+  weight: 1.5
+  price: 9.99
+  list_price: 9.99
+  slug: MyString
+  description_ru: MyText
+  meta_description_ru: MyText
+  meta_title_ru: MyText

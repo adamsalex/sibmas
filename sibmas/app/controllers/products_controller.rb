@@ -25,18 +25,15 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    
-    # render text: params.inspect # что приходит из def new
-
-    # respond_to do |format|
-    #   if @product.save
-    #     format.html { redirect_to @product, notice: 'Product was successfully created.' }
-    #     format.json { render action: 'show', status: :created, location: @product }
-    #   else
-    #     format.html { render action: 'new' }
-    #     format.json { render json: @product.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @product }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /products/1
@@ -73,4 +70,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name_ru, :product_code, :weight, :price, :list_price, :slug, :description_ru, :meta_description_ru, :meta_title_ru)
     end
+
 end

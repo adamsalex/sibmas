@@ -1,19 +1,18 @@
 class ParserController < ApplicationController
   # подключаем Nokogiri
   require 'nokogiri'
-
   # для получения контента через http
   require 'open-uri'
 
-  @name_file = 'sql'
+  require_relative 'constant_txt' 
 
   def masumaParsing
     url = "http://www.masuma.ru/masuma_max.php?q=ru-001"
   	page = Nokogiri::HTML(open(url))   
   	page.encoding = 'utf-8'
-   	
-    @data_array = Array.new
-   # @header_table = page.css("th.c")    
+
+   	@data_array = Array.new
+       
     i = 0
       page.css("#html").each do |item|
         while i < 5 
@@ -27,17 +26,17 @@ class ParserController < ApplicationController
             i += 1    
         end
       end   
-          File.open("#{@name_file}.html", "w") do |f|
-            @items.each { |i| f.puts "#{@data_array}"} 
-          end
-          
-          render text: "#{@data_array}"
+            # @items = Parser.new(description: @data_array) 
+           # render text: "#{item}"
+            # @items.save_to_file
+          save_to_file
   end
 
   def save_to_file
-    File.open("#{@name_file}.html", "w") do |f|
-      @items.each { |i| f.puts "#{@data_array}"} # будет записано в файл car:100:50
+    File.open("#{NAMEFILE}.html", "w") do |f|
+      f.puts "#{HEADER}#{HEADER_TABLE}#{@data_array}#{FOOTER}" # будет записано в файл 
     end
-  end
+  end          
+
 
 end

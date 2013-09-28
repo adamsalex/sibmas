@@ -17,6 +17,6 @@ HEADER_TABLE = '<hr /></div><div class="view-source">
 
 <tbody>'
 
-FOOTER = "</tbody></table></div></div>"
+FOOTER = "</tr></tbody></table></div></div>"
 
 NAMEFILE = 'sql' # constant  

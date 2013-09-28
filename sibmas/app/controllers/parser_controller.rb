@@ -4,25 +4,28 @@ class ParserController < ApplicationController
   # для получения контента через http
   require 'open-uri'
 
-  require_relative 'constant_txt' 
+  require'constant_txt' # /lib/constant_txt.rb
 
   def masumaParsing
     url = "http://www.masuma.ru/masuma_max.php?q=ru-001"
-  	page = Nokogiri::HTML(open(url))   
+  	page = Nokogiri::HTML(open(url)) 
+
   	page.encoding = 'utf-8'
 
    	@data_array = Array.new
        
     i = 0
       page.css("#html").each do |item|
-        while i < 5 
-            firm = item.css(".firm")[i]
-            frame = item.css(".frame")[i]
-            engine = item.css(".engine")[i]
-            year = item.css(".year")[i]
-            info = item.css(".info")[i]
-            
-            @data_array[i] = firm.to_s + frame.to_s + engine.to_s + year.to_s + info.to_s
+        while i < 10 
+            firm = "<tr><td class='nbl firm'>"  + item.css(".firm")[i].text + "</td>"
+            frame = "<td class='frame'>"        + item.css(".frame")[i].text + "</td>"
+            engine = "<td class='engine'>"      + item.css(".engine")[i].text + "</td>"
+            year = "<td class='year'>"          + item.css(".year")[i].text + "</td>"
+            info = "<td class='info'>"          + item.css("td:nth-child(5)")[i].text + "</td>"
+            info_ex = "<td class='info'>"          + item.css("td:nth-child(7)")[i].text + "</td></tr>"
+
+            @data_array[i] = firm + frame + engine + year + info + info_ex
+
             i += 1    
         end
       end   
@@ -33,8 +36,9 @@ class ParserController < ApplicationController
   end
 
   def save_to_file
+    data_str = @data_array.join(" ")
     File.open("#{NAMEFILE}.html", "w") do |f|
-      f.puts "#{HEADER}#{HEADER_TABLE}#{@data_array}#{FOOTER}" # будет записано в файл 
+      f.puts "#{HEADER}#{HEADER_TABLE}#{data_str}#{FOOTER}" # будет записано в файл 
     end
   end          
 

@@ -16,7 +16,7 @@ class ParserController < ApplicationController
        
     i = 0
       page.css("#html").each do |item|
-        while i < 10 
+        while i < item.css(".firm").length  
             firm = "<tr><td class='nbl firm'>"  + item.css(".firm")[i].text + "</td>"
             frame = "<td class='frame'>"        + item.css(".frame")[i].text + "</td>"
             engine = "<td class='engine'>"      + item.css(".engine")[i].text + "</td>"

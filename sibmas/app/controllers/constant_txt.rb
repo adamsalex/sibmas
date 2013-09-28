@@ -1,5 +1,6 @@
 HEADER = '<div class="seo_description_items">'
 
+
 HEADER_TABLE = '<hr /></div><div class="view-source"> 
       <a class="nocookies" href="#">Узнать к каким моделям авто подходят высоковольтные провода MG-60004</a>
 <div class="hide nocookies">
